@@ -25,11 +25,11 @@ jobs:
     name: Bats e2e tests
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
       - name: Setup Bats and bats libs
         id: setup-bats
-        uses: bats-core/bats-action@3.0.1
+        uses: bats-core/bats-action@42fcc8700f773c075a16a90eb11674c0318ad507 # 3.0.1
         with:
           support-path: ${{ github.workspace }}/tests/test_helper/bats-support
           assert-path: "${{ github.workspace }}/tests/test_helper/bats-assert"
@@ -43,7 +43,7 @@ jobs:
 
       - name: Upload logs
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: kind-logs-${{ env.JOB_NAME }}-${{ github.run_id }}
           path: ./_artifacts

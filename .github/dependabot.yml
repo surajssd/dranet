@@ -1,12 +1,29 @@
 version: 2
 updates:
-  - package-ecosystem: "gomod" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "gomod"
+    directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      k8s-deps:
+        patterns:
+          - "*k8s.io*"
+    labels:
+      - "area/dependency"
+      - "ok-to-test"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      # Check for updates to GitHub Actions every week
       interval: "weekly"
+    labels:
+      - "area/dependency"
+      - "ok-to-test"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "area/dependency"
+      - "ok-to-test"
